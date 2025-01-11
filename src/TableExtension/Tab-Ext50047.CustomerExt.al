@@ -2195,6 +2195,8 @@ tableextension 50047 "CustomerExt" extends Customer
         field(69511; "Employer Address"; Code[15])
         {
         }
+        field(69512; "Middle Name"; Code[20]) { }
+        field(69513; "Surname"; Code[20]) { }
     }
 
 
