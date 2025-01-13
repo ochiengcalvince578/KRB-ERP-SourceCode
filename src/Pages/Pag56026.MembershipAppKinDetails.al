@@ -12,6 +12,7 @@ Page 56026 "Membership App Kin Details"
             {
                 field(Type; Rec.Type)
                 {
+                    Visible = false;
                     ApplicationArea = Basic;
                 }
                 field(Name; Rec.Name)
@@ -33,6 +34,7 @@ Page 56026 "Membership App Kin Details"
                 }
                 field(Address; Rec.Address)
                 {
+                    Visible = false;
                     ApplicationArea = Basic;
                 }
                 field(Telephone; Rec.Telephone)
