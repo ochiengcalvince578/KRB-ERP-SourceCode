@@ -805,7 +805,7 @@ Table 51360 "Membership Applications"
         }
         field(68121; "Employment Info"; Option)
         {
-            OptionMembers = " ","Self Employed",Employed,UnEmployed,Others;
+            OptionMembers = " ","KRB Employee","Ex KRB Employee","Non KRB";
         }
         field(68122; "Contracting Details"; Text[30])
         {

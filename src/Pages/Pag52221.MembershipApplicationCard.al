@@ -666,11 +666,11 @@ Page 52221 "Membership Application Card"
             IsJointApplication := true;
             Rec."Global Dimension 1 Code" := 'BOSA';
         end else
-            if rec."Employment Info" = rec."Employment Info"::Employed then begin
+            if rec."Employment Info" = rec."Employment Info"::"KRB Employee" then begin
                 MemberIsEmployed := true;
             end;
         //.........
-        if rec."Employment Info" = rec."Employment Info"::"Self Employed" then begin
+        if rec."Employment Info" = rec."Employment Info"::"Non KRB" then begin
             MemberIsSelfEmployed := true;
         end;
         //.........

@@ -774,7 +774,7 @@ page 56110 "Member Application Card"
                     Editable = EmployerCodeEditable;
                     trigger OnValidate()
                     begin
-                        if Rec."Employment Info" = Rec."Employment Info"::Employed then begin
+                        if Rec."Employment Info" = Rec."Employment Info"::"KRB Employee" then begin
                             employedMember := true;
                             selfEmployedMember := false;
                         end else
@@ -782,18 +782,14 @@ page 56110 "Member Application Card"
                                 employedMember := false;
                                 selfEmployedMember := false;
                             end else
-                                if Rec."Employment Info" = Rec."Employment Info"::Others then begin
+                                if Rec."Employment Info" = Rec."Employment Info"::"Non KRB" then begin
                                     employedMember := false;
-                                    selfEmployedMember := false;
+                                    selfEmployedMember := true;
                                 end else
-                                    if Rec."Employment Info" = Rec."Employment Info"::"Self Employed" then begin
+                                    if Rec."Employment Info" = Rec."Employment Info"::"Ex KRB Employee" then begin
                                         employedMember := false;
-                                        selfEmployedMember := true;
-                                    end else
-                                        if Rec."Employment Info" = Rec."Employment Info"::UnEmployed then begin
-                                            employedMember := false;
-                                            selfEmployedMember := false;
-                                        end;
+                                        selfEmployedMember := false;
+                                    end;
                     end;
                 }
                 field("Income Levels"; Rec."Income Levels")
@@ -830,6 +826,7 @@ page 56110 "Member Application Card"
                 }
                 group("Self Employed")
                 {
+                    Caption = 'Non KRB Employee Details';
                     Visible = selfEmployedMember;//not employedMember;
                     field("Business Name."; Rec.Name)
                     {
@@ -867,6 +864,7 @@ page 56110 "Member Application Card"
             }
             group("Employed")
             {
+                Caption = 'KRB Employee Details';
                 Visible = employedMember;
                 field("Payroll No"; Rec."Payroll No")
                 {
@@ -944,7 +942,7 @@ page 56110 "Member Application Card"
                 field("Recruiter Name"; Rec."Recruiter Name")
                 {
                     ApplicationArea = Basic;
-                    Editable = false;
+                    Editable = false;//if ("How Did you know of KANISA" = filter("Another Member"))
 
                 }
                 field("Captured By"; Rec."Captured By")
@@ -994,7 +992,7 @@ page 56110 "Member Application Card"
                     field("Registration Date"; Rec."Registration Date")
                     {
                         ApplicationArea = Basic;
-                        Editable = false;
+                        Editable = true;
                     }
                     field("Client Computer Name"; Rec."Client Computer Name")
                     {
@@ -1002,90 +1000,6 @@ page 56110 "Member Application Card"
                         Editable = false;
                         Visible = false;
                     }
-                }
-            }
-            group("Member Risk Ratings")
-            {
-                Visible = false;// Individual;
-                group("Member Risk Rate")
-                {
-                    field("Individual Category"; Rec."Individual Category")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                    field("Member Residency Status"; Rec."Member Residency Status")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                    field(Entities; Rec.Entities)
-                    {
-                        ApplicationArea = Basic;
-                    }
-                    field("Industry Type"; Rec."Industry Type")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                    field("Length Of Relationship"; Rec."Length Of Relationship")
-                    {
-                        ApplicationArea = Basic;
-                    }
-                    field("International Trade"; Rec."International Trade")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                }
-
-                group("Product Risk Rating")
-                {
-                    Visible = Individual;
-                    field("Electronic Payment"; Rec."Electronic Payment")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                    field("Accounts Type Taken"; Rec."Accounts Type Taken")
-                    {
-                        ApplicationArea = Basic;
-
-                    }
-                    field("Cards Type Taken"; Rec."Cards Type Taken")
-                    {
-                        ApplicationArea = Basic;
-                        Visible = false;
-
-                    }
-                    field("Others(Channels)"; Rec."Others(Channels)")
-                    {
-                        ApplicationArea = Basic;
-                        Visible = false;
-
-                    }
-                    field("Member Risk Level"; Rec."Member Risk Level")
-                    {
-                        ApplicationArea = Basic;
-                        Caption = 'Risk Level';
-                        Editable = false;
-                        StyleExpr = CoveragePercentStyle;
-
-                    }
-                    field("Due Diligence Measure"; Rec."Due Diligence MeaSure")
-                    {
-                        ApplicationArea = Basic;
-                        Editable = false;
-                        StyleExpr = CoveragePercentStyle;
-                        Visible = false;
-                    }
-                }
-                part(Control27; "Member Due Diligence MeaSure")
-                {
-                    Caption = 'Due Diligence Measure';
-                    SubPageLink = "Member No" = field("No.");
-                    SubPageView = sorting("Due Diligence No");
-                    Visible = false;
                 }
             }
         }
