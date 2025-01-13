@@ -659,16 +659,12 @@ Page 52221 "Membership Application Card"
         IsCustomerType := false;
         RegisteringAsGroupMember := false;
         RegisteringAsCorporate := false;
-        if (Rec."Account Category" = Rec."Account Category"::Individual) then begin
+        if (Rec."Account Category" = Rec."Account Category"::"Regular Account") then begin
             IsIndividualApplication := true;
         end;
-        if (rec."Account Category" = Rec."Account Category"::Corporate) then begin
-            IsJointApplication := true;
-            Rec."Global Dimension 1 Code" := 'BOSA';
-        end else
-            if rec."Employment Info" = rec."Employment Info"::"KRB Employee" then begin
-                MemberIsEmployed := true;
-            end;
+        if rec."Employment Info" = rec."Employment Info"::"KRB Employee" then begin
+            MemberIsEmployed := true;
+        end;
         //.........
         if rec."Employment Info" = rec."Employment Info"::"Non KRB" then begin
             MemberIsSelfEmployed := true;

@@ -177,14 +177,8 @@ Table 51360 "Membership Applications"
 
             trigger OnValidate()
             begin
-                /*Employer.GET("Employer Code");
-                "Employer Name":=Employer.Description;*/
-                Employer.Reset;
-                Employer.SetRange(Employer.Code, "Employer Code");
-                if Employer.Find('-') then begin
-                    "Employer Name" := Employer.Description;
-                end;
-
+                Employer.Get("Employer Code");
+                "Employer Name" := Employer.Description;
             end;
         }
         field(68004; "Date of Birth"; Date)
@@ -597,9 +591,7 @@ Table 51360 "Membership Applications"
         }
         field(68070; "Account Category"; Option)
         {
-            // OptionCaption = 'Individual,Junior,Joint,Corporate,Business,Other';
-            // OptionMembers = Individual,Junior,Joint,Corporate,Business,Other;
-            OptionMembers = Individual,Corporate,Business,Other;
+            OptionMembers = "Regular Account","Junior Account";
         }
         field(68071; "Copy of KRA Pin"; Boolean)
         {
