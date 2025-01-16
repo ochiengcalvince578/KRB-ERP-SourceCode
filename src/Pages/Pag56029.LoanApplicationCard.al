@@ -902,7 +902,7 @@ Page 56029 "Loan Application Card"
             if Cust."E-Mail (Personal)" <> ' ' then begin
                 Emailaddress := Cust."E-Mail (Personal)";
                 EmailSubject := 'Loan Application Approval';
-                EMailBody := 'Dear <b>' + '</b>,</br></br>' + 'Your ' + Rec."Loan Product Type Name" + ' loan application of KSHs.' + FORMAT(Rec."Requested Amount") +
+                EMailBody := 'Dear <b>' + '</b>,</br></br>' + 'Your ' + Rec."Loan Product Type Name" + ' loan application of KSHs. ' + FORMAT(Rec."Requested Amount") +
                           ' has been Approved by Credit. KRB Sacco Ltd.' + '<br></br>' +
 'Congratulations';
                 EmailCodeunit.SendMail(Emailaddress, EmailSubject, EmailBody);
@@ -933,7 +933,7 @@ Page 56029 "Loan Application Card"
         SMSMessages.Source := 'LOAN APPL';
         SMSMessages."Entered By" := USERID;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Your' + Format(Rec."Loan Product Type Name") + 'loan application of KSHs.' + FORMAT(Rec."Requested Amount") +
+        SMSMessages."SMS Message" := 'Your ' + Format(Rec."Loan Product Type Name") + ' loan application of KSHs. ' + FORMAT(Rec."Requested Amount") +
                                   ' has been Approved by Credit. KRB Sacco Ltd.';
         Cust.RESET;
         IF Cust.GET(Rec."Client Code") THEN

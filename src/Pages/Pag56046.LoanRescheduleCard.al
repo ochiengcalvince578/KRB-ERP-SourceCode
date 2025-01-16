@@ -614,7 +614,7 @@ Page 56046 "Loan Reschedule Card"
                         SMSMessages.Source := 'LOAN APPL';
                         SMSMessages."Entered By" := UserId;
                         SMSMessages."Sent To Server" := SMSMessages."sent to server"::No;
-                        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + Format(Rec."Requested Amount") +
+                        SMSMessages."SMS Message" := 'Your loan application of KSHs. ' + Format(Rec."Requested Amount") +
                                                   ' has been received ' + CompanyInfo.Name + '.';
                         Cust.Reset;
                         if Cust.Get(Rec."Client Code") then

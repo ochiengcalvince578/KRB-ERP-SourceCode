@@ -783,7 +783,7 @@ Page 56128 "Loans Pending Approval"
         SMSMessages.Source := 'LOAN APPL';
         SMSMessages."Entered By" := USERID;
         SMSMessages."Sent To Server" := SMSMessages."Sent To Server"::No;
-        SMSMessages."SMS Message" := 'Your loan application of KSHs.' + FORMAT(Rec."Requested Amount") +
+        SMSMessages."SMS Message" := 'Your loan application of KSHs. ' + FORMAT(Rec."Requested Amount") +
                                   ' has been received. KRB Sacco Ltd.';
         Cust.RESET;
         IF Cust.GET(Rec."Client Code") THEN
@@ -823,7 +823,7 @@ Page 56128 "Loans Pending Approval"
                     IF LoanApp.GET(LoanGuar."Loan No") THEN
                         SMSMessages."SMS Message" := 'You have guaranteed an amount of ' + FORMAT(LoanGuar."Amont Guaranteed")
                         + ' to ' + Rec."Client Name" + '  ' +
-                        'Loan Type ' + Rec."Loan Product Type Name" + ' ' + 'of ' + FORMAT(Rec."Requested Amount") + ' at KRB Sacco Ltd. Call 0726050260 if in dispute';
+                        ' Loan Type ' + Rec."Loan Product Type Name" + ' ' + 'of ' + FORMAT(Rec."Requested Amount") + ' at KRB Sacco Ltd. Call 0726050260 if in dispute';
                     ;
                     SMSMessages."Telephone No" := Cust."Phone No.";
                     SMSMessages.INSERT;

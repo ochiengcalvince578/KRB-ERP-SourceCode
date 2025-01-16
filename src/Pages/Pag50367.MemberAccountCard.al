@@ -2,8 +2,8 @@ page 50367 "Member Account Card"
 {
     ApplicationArea = Basic;
     Caption = 'Member Card';
-    DeleteAllowed = true;
-    Editable = true;
+    DeleteAllowed = false;// true;
+    Editable = false;// true;
     InsertAllowed = false;
     PageType = Card;
     // PromotedActionCategories = 'Process,Reports,Budgetary Control,Cancellation,Category7_caption,Category8_caption,Category9_caption,Category10_caption';
@@ -32,6 +32,17 @@ page 50367 "Member Account Card"
                     Editable = false;
                     Style = StrongAccent;
                 }
+                field(SecondName; Rec."Name 2")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                    Editable = false;
+                }
+                // field(LastName; Rec.Surname)
+                // {
+                //     ApplicationArea = Basic;
+                //     Style = StrongAccent;
+                // }
                 field("ID No."; Rec."ID No.")
                 {
                     ApplicationArea = Basic;
@@ -525,6 +536,29 @@ page 50367 "Member Account Card"
                 }
 
             }
+            group("Bank Details")
+            {
+                Editable = false;
+
+                field("Bank Account No."; Rec."Bank Account No.")
+                {
+                    ApplicationArea = Basic;
+                }
+                field("Bank Code"; Rec."Bank Code")
+                {
+                    ApplicationArea = Basic;
+                    Caption = ' Bank Name';
+                }
+                field("Bank Name"; Rec."Bank Name")
+                {
+                    ApplicationArea = Basic;
+                    Visible = false;
+                }
+                field("Bank Branch"; Rec."Bank Branch Name")
+                {
+                    ApplicationArea = Basic;
+                }
+            }
             group("Other Details")
             {
                 Caption = 'Other Details';
@@ -611,29 +645,6 @@ page 50367 "Member Account Card"
                     ApplicationArea = Basic;
                     Caption = 'Withdrawal Status';
                     Editable = false;
-                }
-            }
-            group("Bank Details")
-            {
-                Editable = false;
-
-                field("Bank Account No."; Rec."Bank Account No.")
-                {
-                    ApplicationArea = Basic;
-                }
-                field("Bank Code"; Rec."Bank Code")
-                {
-                    ApplicationArea = Basic;
-                    Caption = ' Bank Name';
-                }
-                field("Bank Name"; Rec."Bank Name")
-                {
-                    ApplicationArea = Basic;
-                    Visible = false;
-                }
-                field("Bank Branch"; Rec."Bank Branch Name")
-                {
-                    ApplicationArea = Basic;
                 }
             }
             group("File Movement Tracker")
@@ -824,7 +835,7 @@ page 50367 "Member Account Card"
                 action("Members Beneficiary Details")
                 {
                     ApplicationArea = Basic;
-                    Caption = 'Members Benevolent Beneficiary Details';
+                    Caption = 'Members Nominee Details';
                     Image = Relationship;
                     Promoted = true;
                     PromotedCategory = Process;

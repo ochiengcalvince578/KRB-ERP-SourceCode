@@ -29,6 +29,16 @@ Page 56027 "Member List"
                     ApplicationArea = Basic;
                     Style = StrongAccent;
                 }
+                field(SecondName; Rec."Name 2")
+                {
+                    ApplicationArea = Basic;
+                    Style = StrongAccent;
+                }
+                // field(LastName; Rec.Surname)
+                // {
+                //     ApplicationArea = Basic;
+                //     Style = StrongAccent;
+                // }
 
                 field("ID No."; Rec."ID No.")
                 {

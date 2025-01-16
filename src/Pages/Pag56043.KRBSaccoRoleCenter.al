@@ -209,9 +209,6 @@ Page 56043 "KRB Sacco Role Center"
                     ToolTip = 'Process incoming and outgoing payments. Set up bank accounts and service connections for electronic banking.  ';
                     Visible = true;
 
-
-
-
                     action("G/L Register")
                     {
                         ApplicationArea = Basic, Suite;
@@ -265,22 +262,12 @@ Page 56043 "KRB Sacco Role Center"
                         RunObject = page "Bank Account List";
                     }
 
-
-                    action("Voucher Cash Payments")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Voucher Cash Payment';
-                        RunObject = Page "Payment List";
-                        Visible = false;
-
-                    }
-
                     action("Cash Payments")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Cash Payments';
                         RunObject = Page "Cash Payment List";
-                        Visible = false;
+                        Visible = true;
 
                     }
 
@@ -672,48 +659,43 @@ Page 56043 "KRB Sacco Role Center"
                     {
                         ApplicationArea = All;
                         Caption = 'Statement of Directors Responsibilities';
-                        // RunObject = report "Statement of Directors'RE";
+                        RunObject = report "Statement of Directors'RE";
                     }
                     action(Reportofthedirectors)
                     {
                         ApplicationArea = All;
-                        // RunObject = report "REPORT OF THE DIRECTORS";
+                        RunObject = report "REPORT OF THE DIRECTORS";
                         Caption = 'Report of the Directors';
                     }
                     action("Financial Statical Information")
                     {
                         ApplicationArea = All;
 
-                        // RunObject = report FinancialStaticalInformation;
+                        RunObject = report FinancialStaticalInformation;
                     }
                     action("Statement of Financial Position Mkopo")
                     {
                         ApplicationArea = All;
                         Caption = 'Satement of Financial Position';
-                        // RunObject = report "State of financial Position";
+                        RunObject = report "State of financial Position";
                     }
                     action("Statement of profit or loss and other comprehensive income")
                     {
                         ApplicationArea = All;
                         Caption = 'Statement of profit or loss and other comprehensive income';
-                        // RunObject = report StatementProfitorloss;
+                        RunObject = report StatementProfitorloss;
                     }
                     action("Statement of changes of Equity Current")
                     {
                         ApplicationArea = All;
                         Caption = 'Statement of Changes im Equity';
-                        // RunObject = report StatementOfChangesInEquity;
+                        RunObject = report StatementOfChangesInEquity;
                     }
-                    // action("Statement of changes of Equity Previous")
-                    // {
-                    //     ApplicationArea = All;
-                    //     RunObject = report StatchangesinequityPrevious;
-                    // }
                     action("Statement OF Cash Flows")
                     {
                         ApplicationArea = All;
                         Caption = 'Cash Flows';
-                        // RunObject = report cashFlows;
+                        RunObject = report cashFlows;
                     }
                 }
                 //.......................................................................................................................................
@@ -743,19 +725,8 @@ Page 56043 "KRB Sacco Role Center"
                         caption = 'Create and Close Accounting Period';
                         RunObject = page "Accounting Periods";
                     }
-
-                    // action("Update Liquidity")
-                    // {
-                    //     ApplicationArea = Basic, Suite;
-                    //     caption = 'Update Liquidity Report';
-
-                    // }
                 }
 
-
-
-
-                // }
 
             }
 
@@ -1828,148 +1799,6 @@ Page 56043 "KRB Sacco Role Center"
             }
 
 
-            //......................... START OF CRM Main MENU ...............................................
-            // group(SaccoCRM)
-            // {
-            //     Caption = 'CRM';
-            //     Visible = true;
-
-            //     action("CRM Member List")
-            //     {
-            //         Caption = 'CRM Member List';
-            //         ApplicationArea = basic, suite;
-            //         Image = ProdBOMMatrixPerVersion;
-            //         RunObject = page "CRM Member List";
-
-            //     }
-            //     group("Case Management")
-            //     {
-            //         action("Case Registration")
-            //         {
-            //             Caption = 'Lead Management';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "Lead list";
-            //             RunPageView = WHERE(status = CONST(New));
-            //             ToolTip = 'Create a New Case enquiry';
-
-            //         }
-            //         action("Assigned Cases")
-            //         {
-            //             Caption = 'Assigned Cases';
-            //             ApplicationArea = basic, suite;
-            //             Image = Open;
-            //             RunObject = page "Lead list Escalated";
-            //             RunPageView = WHERE(status = CONST(Escalted));
-            //             ToolTip = 'Open List Of Cases open & Assigned To Me';
-            //         }
-            //         action("Resolved Case Enquiries")
-            //         {
-            //             Caption = 'Resolved Cases Enquiries';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "Lead list Closed";
-            //             RunPageView = WHERE(status = CONST(Resolved));
-            //             ToolTip = 'Resolved Cases Enquiries';
-
-            //         }
-            //         action("Unreolved Case Enquiries")
-            //         {
-            //             Caption = 'Unresolved Case Enquiries';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "Lead list Closed";
-            //             RunPageView = WHERE("Lead Status" = CONST(open));
-            //             ToolTip = 'Unresolved Cases Enquiries';
-            //         }
-            //         action("Member FeedBack")
-            //         {
-            //             Caption = 'Member FeedBacks';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "Member FeedBack List";
-            //         }
-            //         group("CRM Reports")
-            //         {
-            //             action("Resolved Cases")
-            //             {
-            //                 Caption = 'Resolved Cases';
-            //                 ApplicationArea = basic, suite;
-            //                 Image = Report;
-            //                 RunObject = report "CRM Resolved Cases Report";
-            //                 ToolTip = 'Resolved Cases';
-            //             }
-            //             action("UnResolved Cases")
-            //             {
-            //                 Caption = 'UnResolved Cases';
-            //                 ApplicationArea = basic, suite;
-            //                 Image = Report;
-            //                 RunObject = report "CRM UnResolved Cases Report";
-            //                 ToolTip = 'UnResolved Cases';
-            //             }
-            //             action("customer Feed Back Report")
-            //             {
-            //                 Caption = 'Customer Feed Back Report';
-            //                 ApplicationArea = basic, suite;
-            //                 Image = Report;
-            //                 RunObject = report MemberFeedBackReport;
-            //             }
-            //             action("Complaints Report")
-            //             {
-
-            //                 ApplicationArea = basic, suite;
-            //                 Image = Report;
-            //                 RunObject = report MemberComplaintsReport;
-            //             }
-            //             action("Member Feedback and Satisfaction Report")
-            //             {
-            //                 Caption = 'Member Feedback and Satisfaction Report';
-            //                 ApplicationArea = basic, suite;
-            //                 Image = Report;
-            //                 RunObject = report MemberFeedBackReport;
-            //             }
-            //             action(MemberSuggestionsReport)
-            //             {
-            //                 Caption = 'Member Suggestions Report';
-            //                 ApplicationArea = all;
-            //                 Image = Report;
-            //                 RunObject = report MemberSugestionReport;
-            //             }
-            //             action(MemberResolutionTimeTaken)
-            //             {
-            //                 Caption = 'Members’ resolution time taken report';
-            //                 ApplicationArea = all;
-            //                 RunObject = report MemberResolutionTimeTaken;
-            //             }
-
-            //         }
-
-            //     }
-            //     group("CRM Gen Setup")
-            //     {
-            //         action("CRM General setup")
-            //         {
-            //             Caption = 'CRM General Setup';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "CRM General SetUp";
-            //             ToolTip = 'CRM Setup';
-
-            //         }
-            //         action("CRM CaseS types")
-            //         {
-            //             Caption = 'CRM Case types';
-            //             ApplicationArea = basic, suite;
-            //             Image = Capacity;
-            //             RunObject = page "CRM Case Types";
-            //             ToolTip = 'CRM Case Types';
-            //             Visible = false;
-
-            //         }
-            //     }
-
-            // }
-
             //........................... End of CRM MAIN MENU ...............................................
             group(Action16)
             {
@@ -2186,6 +2015,7 @@ Page 56043 "KRB Sacco Role Center"
 
             group("Swizz Payroll Management")
             {
+                Visible = false;
                 group("Payroll Employees.")
                 {
                     action("Payroll Employee List.")
