@@ -48,6 +48,39 @@ Page 56041 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loan List";
                 }
+                field("DEVELOPMENT LOAN 2"; Rec."DEVELOPMENT LOAN 2")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
+                field("SUPER EMERGENCY LOAN"; Rec."DEVELOPMENT LOAN 1")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
+                field("QUICK LOAN"; Rec."INVESTMENT LOAN")
+                {
+                    ApplicationArea = Basic;
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
+                field("SUPER QUICK"; Rec."SCHOOL FEES")
+                {
+                    ApplicationArea = Basic;
+                    Caption = 'SCHOOL FEES';
+                    Image = none;
+                    Style = Favorable;
+                    StyleExpr = true;
+                    DrillDownPageId = "Loans Posted List";
+                }
                 field("EMERGENCY LOAN"; Rec."EMERGENCY LOAN")
                 {
                     ApplicationArea = Basic;
@@ -56,43 +89,10 @@ Page 56041 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("SUPER EMERGENCY LOAN"; Rec."SUPER EMERGENCY LOAN")
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loans Posted List";
-                }
-                field("QUICK LOAN"; Rec."QUICK LOAN")
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loans Posted List";
-                }
-                field("SUPER QUICK"; Rec."SUPER QUICK")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'SCHOOL FEES LOAN';
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loans Posted List";
-                }
-                field("SCHOOL FEES"; Rec."SCHOOL FEES")
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loans Posted List";
-                }
 
 
 
-                field("SUPER SCHOOL FEES"; Rec."SUPER SCHOOL FEES")
+                field("FLEXI LOAN"; Rec."FLEXI LOAN")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -100,7 +100,7 @@ Page 56041 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("M-KRB"; Rec."M-KRB")
+                field("INSTANT LOAN"; Rec."INSTANT LOAN")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -108,7 +108,7 @@ Page 56041 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("DEVELOPMENT LOAN"; Rec."DEVELOPMENT LOAN")
+                field("SHERIA COMPLIANT LOANS"; Rec."SHERIA COMPLIANT LOANS")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -117,7 +117,7 @@ Page 56041 "Loans Cue"
                     DrillDownPageId = "Loans Posted List";
 
                 }
-                field("NORMAL LOAN"; Rec."NORMAL LOAN")
+                field("DEVELOPMENT LOAN 2 14%"; Rec."DEVELOPMENT LOAN 2 14%")
                 {
                     ApplicationArea = Basic;
                     Image = none;
@@ -125,15 +125,6 @@ Page 56041 "Loans Cue"
                     StyleExpr = true;
                     DrillDownPageId = "Loans Posted List";
                 }
-                field("DEVELOPMENT LOAN 1"; Rec."DEVELOPMENT LOAN 1")
-                {
-                    ApplicationArea = Basic;
-                    Image = none;
-                    Style = Favorable;
-                    StyleExpr = true;
-                    DrillDownPageId = "Loans Posted List";
-                }
-
 
 
             }

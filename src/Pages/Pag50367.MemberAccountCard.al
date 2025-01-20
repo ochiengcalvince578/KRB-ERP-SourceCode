@@ -805,9 +805,8 @@ page 50367 "Member Account Card"
                     begin
                         Cust.Reset;
                         Cust.SetRange(Cust."No.", Rec."No.");
-                        if Cust.FindFirst then begin
-                            Report.Run(50279, true, false, Cust);
-                        end;
+                        if Cust.Find('-') then
+                            Report.Run(50223, true, false, Cust);
                     end;
                 }
 

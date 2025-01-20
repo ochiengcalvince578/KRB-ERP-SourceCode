@@ -25,15 +25,15 @@ table 50056 "loans Cuess"
         }
 
 
-        field(8; "EMERGENCY LOAN"; Integer)
+        field(8; "DEVELOPMENT LOAN 2"; Integer)
         {
-            CalcFormula = COUNT("Loans Register" WHERE("Approval Status" = CONST(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = filter('EMERGENCY LOAN')));
+            CalcFormula = COUNT("Loans Register" WHERE("Approval Status" = CONST(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = filter('LT001')));
             FieldClass = FlowField;
 
         }
-        field(9; "SUPER EMERGENCY LOAN"; Integer)
+        field(9; "DEVELOPMENT LOAN 1"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = const('SUPER EMERGENCY LOAN')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Outstanding Balance" = filter(> 0), "Loan Status" = const(Issued), "Loan Product Type" = const('LT001')));
             FieldClass = FlowField;
         }
         field(10; "DEBOOSTER"; Integer)
@@ -42,9 +42,9 @@ table 50056 "loans Cuess"
             FieldClass = FlowField;
 
         }
-        field(11; "SCHOOL FEES"; Integer)
+        field(11; "EMERGENCY LOAN"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Loan Status" = const(Issued), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('SCHOOL FEES')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Loan Status" = const(Issued), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT005')));
             FieldClass = FlowField;
         }
         field(12; "FURNITURE"; Integer)
@@ -62,39 +62,34 @@ table 50056 "loans Cuess"
             CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('IPF')));
             FieldClass = FlowField;
         }
-        field(15; "SUPER SCHOOL FEES"; Integer)
+        field(15; "FLEXI LOAN"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('SUPER SCHOOL FEES')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT006')));
             FieldClass = FlowField;
         }
-        field(16; "M-KRB"; Integer)
+        field(16; "INSTANT LOAN"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('M-KRB')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT007')));
             FieldClass = FlowField;
         }
-        field(17; "DEVELOPMENT LOAN"; Integer)
+        field(17; "SHERIA COMPLIANT LOANS"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('DEVELOPMENT LOAN')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT008')));
             FieldClass = FlowField;
         }
-        field(18; "NORMAL LOAN"; Integer)
+        field(18; "DEVELOPMENT LOAN 2 14%"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('NORMAL LOAN')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT009')));
             FieldClass = FlowField;
         }
-        field(19; "DEVELOPMENT LOAN 1"; Integer)
+        field(20; "INVESTMENT LOAN"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('DEVELOPMENT LOAN 1')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT003')));
             FieldClass = FlowField;
         }
-        field(20; "QUICK LOAN"; Integer)
+        field(21; "SCHOOL FEES"; Integer)
         {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('QUICK LOAN')));
-            FieldClass = FlowField;
-        }
-        field(21; "SUPER QUICK"; Integer)
-        {
-            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('SUPER QUICK')));
+            CalcFormula = count("Loans Register" where("Approval Status" = const(Approved), "Approved Amount" = filter(> 0), "Outstanding Balance" = filter(> 0), "Loan Product Type" = const('LT004')));
             FieldClass = FlowField;
         }
         field(22; "Cleared Loans"; Integer)
