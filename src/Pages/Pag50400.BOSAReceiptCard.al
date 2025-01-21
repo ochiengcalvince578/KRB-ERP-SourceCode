@@ -679,7 +679,7 @@ page 50400 "BOSA Receipt Card"
                 ObjMember.CalcFields(ObjMember."Shares Retained");
                 if ObjMember."Shares Retained" < GenSetup."Retained Shares" then begin
                     SharesCap := GenSetup."Retained Shares";
-                    DIFF := ObjMember."Monthly ShareCap Cont.";  //SharesCap - ObjMember."Shares Retained";
+                    DIFF := SharesCap - ObjMember."Shares Retained";// ObjMember."Monthly ShareCap Cont."; 
 
                     if DIFF > 1 then begin
                         if RunningBalance > 0 then begin
@@ -932,12 +932,12 @@ page 50400 "BOSA Receipt Card"
             ObjReceiptTransactions."Member No" := ObjMember."No.";
             ObjReceiptTransactions."Account Type" := ObjReceiptTransactions."account type"::Customer;
             ObjReceiptTransactions."Account No" := ObjReceiptTransactions."Member No";
-            // if "Excess Transaction Type" = "excess transaction type"::"Junior Savings" then
-            //     ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Junior Savings";
-            // if "Excess Transaction Type" = "excess transaction type"::"Silver Savings" then
-            //     ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Silver Savings";
-            // if "Excess Transaction Type" = "excess transaction type"::"Safari Saving" then
-            //     ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Safari Savings";
+            if rec."Excess Transaction Type" = rec."excess transaction type"::"Shares Capital" then
+                ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Shares Capital";
+            if rec."Excess Transaction Type" = rec."excess transaction type"::"Children Savings" then
+                ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Children Savings";
+            if rec."Excess Transaction Type" = rec."excess transaction type"::"Withdrawable Savings" then
+                ObjReceiptTransactions."Transaction Type" := ObjReceiptTransactions."transaction type"::"Withdrawable Savings";
             ObjReceiptTransactions."Global Dimension 1 Code" := 'BOSA';
             ObjReceiptTransactions."Global Dimension 2 Code" := SURESTEPFactory.FnGetMemberBranch(ObjRcptBuffer."Account No.");
             ObjReceiptTransactions.Amount := AmountToDeduct;

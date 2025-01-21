@@ -493,30 +493,30 @@ page 56110 "Member Application Card"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field(Department; Rec.Department)
-                {
-                    ApplicationArea = Basic;
-                    Editable = NameEditable;
-                }
-                field("Office Branch"; Rec."Office Branch")
-                {
-                    ApplicationArea = Basic;
-                    Editable = NameEditable;
-                }
+                // field(Department; Rec.Department)
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = NameEditable;
+                // }
+                // field("Office Branch"; Rec."Office Branch")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = NameEditable;
+                // }
                 field("Official Designation"; Rec."Official Designation")
                 {
                     ApplicationArea = Basic;
                     Editable = NameEditable;
                 }
-                field(Station; Rec.Section)
-                {
-                    Caption = 'Station';
-                    ApplicationArea = Basic;
-                }
-                field("Station Name"; Rec."Station Name")
-                {
-                    ApplicationArea = all;
-                }
+                // field(Station; Rec.Section)
+                // {
+                //     Caption = 'Station';
+                //     ApplicationArea = Basic;
+                // }
+                // field("Station Name"; Rec."Station Name")
+                // {
+                //     ApplicationArea = all;
+                // }
                 field("Date Employed"; Rec."Date Employed")
                 {
                     ApplicationArea = Basic;
@@ -535,7 +535,7 @@ page 56110 "Member Application Card"
                 field("Ex-Payroll No"; Rec."Payroll No")
                 {
                     ApplicationArea = Basic;
-                    ShowMandatory = true;
+                    ShowMandatory = false;
                 }
                 field("Ex-Employer Code"; Rec."Employer Code")
                 {
@@ -547,30 +547,30 @@ page 56110 "Member Application Card"
                     ApplicationArea = Basic;
                     Editable = false;
                 }
-                field("Ex-Department"; Rec.Department)
-                {
-                    ApplicationArea = Basic;
-                    Editable = NameEditable;
-                }
-                field("Ex-Office Branch"; Rec."Office Branch")
-                {
-                    ApplicationArea = Basic;
-                    Editable = NameEditable;
-                }
+                // field("Ex-Department"; Rec.Department)
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = NameEditable;
+                // }
+                // field("Ex-Office Branch"; Rec."Office Branch")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = NameEditable;
+                // }
                 field("Ex-Official Designation"; Rec."Official Designation")
                 {
                     ApplicationArea = Basic;
                     Editable = NameEditable;
                 }
-                field("Ex-Station"; Rec.Section)
-                {
-                    Caption = 'Station';
-                    ApplicationArea = Basic;
-                }
-                field("Ex-Station Name"; Rec."Station Name")
-                {
-                    ApplicationArea = all;
-                }
+                // field("Ex-Station"; Rec.Section)
+                // {
+                //     Caption = 'Station';
+                //     ApplicationArea = Basic;
+                // }
+                // field("Ex-Station Name"; Rec."Station Name")
+                // {
+                //     ApplicationArea = all;
+                // }
                 field("Ex-Terms of Employment"; Rec."Terms of Employment")
                 {
                     ApplicationArea = Basic;
@@ -814,6 +814,7 @@ page 56110 "Member Application Card"
 
                     trigger OnAction()
                     var
+                        nominee: Record "Member App Nominee";// "Members Nominee";
                         Text001: label 'This request is already pending approval';
                     begin
 
@@ -850,6 +851,20 @@ page 56110 "Member Application Card"
                             NOkApp.SetRange(NOkApp."Account No", Rec."No.");
                             if NOkApp.Find('-') = false then begin
                                 Error('Please Insert Next 0f kin Information');
+                            end;
+                        end;
+
+                        if (Rec."Account Category" = Rec."account category"::"Regular Account") then begin//end or (Rec."Account Category" = Rec."account category"::Junior) or (Rec."Account Category" = Rec."account category"::Joint) then begin
+                            nominee.Reset;
+                            nominee.SetRange(nominee."Account No", Rec."No.");
+                            if nominee.Find('-') = false then begin
+                                Error('Please Insert Nominee Information');
+                            end else begin
+                                nominee.SetRange(nominee.Age, '>18');
+                                nominee.SetRange(nominee."Next Of Kin Type", nominee."Next Of Kin Type"::"Guardian/Trustee");
+                                if nominee.Find('-') = false then begin
+                                    Error('Please Insert atleast one guardian Nominee');
+                                end;
                             end;
                         end;
                         if Rec.Status <> Rec.Status::Open then

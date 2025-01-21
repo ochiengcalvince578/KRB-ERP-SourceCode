@@ -19,7 +19,7 @@ page 50364 "Membership App Nominee Detail"
                 {
                     ApplicationArea = Basic;
                     Editable = true;
-                    ShowMandatory = true;
+                    // ShowMandatory = true;
                 }
                 field("Next Of Kin Type"; Rec."Next Of Kin Type")
                 {
@@ -28,12 +28,48 @@ page 50364 "Membership App Nominee Detail"
                 field("Date of Birth"; Rec."Date of Birth")
                 {
                     ApplicationArea = Basic;
+                    ShowMandatory = true;
                 }
+
                 field(Age; Rec.Age)
                 {
                     ApplicationArea = Basic;
                     Editable = false;
+                    ShowMandatory = true;
                 }
+
+                // field(Age; Rec.Age)
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                //     ShowMandatory = true;
+
+                //     trigger OnValidate()
+                //     var
+                //         GuardianRec: Record "Member App Nominee";
+
+                //         AgeInt: Integer;
+                //     begin
+                //         if Evaluate(AgeInt, Rec.Age) and (AgeInt < 18) then begin
+                //             Message('Nominee is under 18. Adding an entry for guardian details.');
+
+                //             // Initialize a new record for the guardian
+                //             GuardianRec.Init();
+                //             GuardianRec.Name := ''; // Placeholder for guardian name
+                //             GuardianRec."Next Of Kin Type" := GuardianRec."Next Of Kin Type"::"Guardian/Trustee";
+                //             GuardianRec."Date of Birth" := 0D;
+                //             GuardianRec.Telephone := '';
+                //             GuardianRec."%Allocation" := 0;
+                //             GuardianRec.Insert();
+
+                //             CurrPage.Update(false);
+                //         end
+                //     end;
+                //}
+
+
+
+
                 // field(Address; Rec.Address)
                 // {
                 //     ApplicationArea = Basic;
@@ -41,6 +77,7 @@ page 50364 "Membership App Nominee Detail"
                 field(Telephone; Rec.Telephone)
                 {
                     ApplicationArea = Basic;
+                    ShowMandatory = true;
                 }
                 // field(Description; Rec.Description)
                 // {
@@ -55,14 +92,20 @@ page 50364 "Membership App Nominee Detail"
                     Caption = 'Id/Birth Cert No.';
                     ApplicationArea = Basic;
                 }
+
+                field("Location"; Rec."Location")
+                {
+                    ApplicationArea = Basic;
+                    ShowMandatory = true;
+                }
                 field("%Allocation"; Rec."%Allocation")
                 {
                     ApplicationArea = Basic;
+                    ShowMandatory = true;
                 }
             }
         }
     }
-
     actions
     {
     }

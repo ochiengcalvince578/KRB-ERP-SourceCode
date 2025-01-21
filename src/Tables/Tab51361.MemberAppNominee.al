@@ -24,7 +24,6 @@ Table 51361 "Member App Nominee"
         }
         field(5; "Date of Birth"; Date)
         {
-
             trigger OnValidate()
             begin
                 Age := Dates.DetermineAge("Date of Birth", Today);
@@ -77,6 +76,8 @@ Table 51361 "Member App Nominee"
         }
         field(15; Age; Text[50])
         {
+
+
         }
         field(16; Description; Text[50])
         {
@@ -86,6 +87,8 @@ Table 51361 "Member App Nominee"
             OptionCaption = ' ,Beneficiary,Guardian/Trustee';
             OptionMembers = " ",Beneficiary,"Guardian/Trustee";
         }
+
+        field(18; "Location"; Text[30]) { }
     }
 
     keys
