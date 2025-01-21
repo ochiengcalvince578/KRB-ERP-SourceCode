@@ -201,6 +201,10 @@ enum 51516010 "TransactionTypesEnum"
     {
 
     }
-    value(56; "Mwanangu Savings") { Caption = 'Mwanangu Savings'; }
+    value(56; "Loan Insurance Charged")
+    {
+
+    }
+    value(57; "Mwanangu Savings") { Caption = 'Mwanangu Savings'; }
 
 }
