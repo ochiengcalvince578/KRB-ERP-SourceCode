@@ -854,19 +854,45 @@ page 56110 "Member Application Card"
                             end;
                         end;
 
-                        if (Rec."Account Category" = Rec."account category"::"Regular Account") then begin//end or (Rec."Account Category" = Rec."account category"::Junior) or (Rec."Account Category" = Rec."account category"::Joint) then begin
-                            nominee.Reset;
+
+                        if (Rec."Account Category" = Rec."account category"::"Regular Account") then begin
+                            nominee.Reset();
                             nominee.SetRange(nominee."Account No", Rec."No.");
-                            if nominee.Find('-') = false then begin
+
+                            // Check if there is any nominee for the account
+                            if not nominee.Find('-') then begin
                                 Error('Please Insert Nominee Information');
                             end else begin
-                                nominee.SetRange(nominee.Age, '>18');
-                                nominee.SetRange(nominee."Next Of Kin Type", nominee."Next Of Kin Type"::"Guardian/Trustee");
-                                if nominee.Find('-') = false then begin
-                                    Error('Please Insert atleast one guardian Nominee');
+                                // Check if there is a nominee under 18
+                                nominee.SetRange(nominee.Age, '<18');
+                                if nominee.Find('-') then begin
+                                    // If a nominee under 18 exists, check for at least one guardian nominee above 18
+                                    nominee.Reset();
+                                    nominee.SetRange(nominee."Account No", Rec."No.");
+                                    nominee.SetRange(nominee.Age, '>18');
+                                    nominee.SetRange(nominee."Next Of Kin Type", nominee."Next Of Kin Type"::"Guardian/Trustee");
+
+                                    if not nominee.Find('-') then begin
+                                        Error('Please Insert at least one guardian Nominee (Age > 18) since a nominee under 18 exists.');
+                                    end;
                                 end;
                             end;
                         end;
+
+
+                        // if (Rec."Account Category" = Rec."account category"::"Regular Account") then begin//end or (Rec."Account Category" = Rec."account category"::Junior) or (Rec."Account Category" = Rec."account category"::Joint) then begin
+                        //     nominee.Reset;
+                        //     nominee.SetRange(nominee."Account No", Rec."No.");
+                        //     if nominee.Find('-') = false then begin
+                        //         Error('Please Insert Nominee Information');
+                        //     end else begin
+                        //         nominee.SetRange(nominee.Age, '>18');
+                        //         nominee.SetRange(nominee."Next Of Kin Type", nominee."Next Of Kin Type"::"Guardian/Trustee");
+                        //         if nominee.Find('-') = false then begin
+                        //             Error('Please Insert atleast one guardian Nominee');
+                        //         end;
+                        //     end;
+                        // end;
                         if Rec.Status <> Rec.Status::Open then
                             Error(Text001);
 
@@ -921,10 +947,10 @@ page 56110 "Member Application Card"
                         if Rec.Status <> Rec.Status::Approved then
                             Error('This application has not been approved');
                         ///.................
-                        if Rec."Global Dimension 2 Code" = '' then begin
-                            Error('Branch Code is Mandatory');
+                        // if Rec."Global Dimension 2 Code" = '' then begin
+                        //     Error('Branch Code is Mandatory');
 
-                        end;
+                        // end;
                         Cust.Reset;
                         Cust.SetRange(Cust."ID No.", Rec."ID No.");
                         Cust.SetRange(Cust."Customer Type", Cust."customer type"::Member);

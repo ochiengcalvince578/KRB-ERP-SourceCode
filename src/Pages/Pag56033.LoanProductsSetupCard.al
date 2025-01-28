@@ -102,11 +102,11 @@ Page 56033 "Loan Products Setup Card"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Shares Multiplier"; Rec."Shares Multiplier")
-                {
-                    ApplicationArea = Basic;
-                    Caption = 'BOSA Deposits Multiplier';
-                }
+                // field("Shares Multiplier"; Rec."Shares Multiplier")
+                // {
+                //     ApplicationArea = Basic;
+                //     Caption = 'BOSA Deposits Multiplier';
+                // }
                 field("Penalty Calculation Method"; Rec."Penalty Calculation Method")
                 {
                     ApplicationArea = Basic;
