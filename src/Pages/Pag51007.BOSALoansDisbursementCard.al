@@ -918,6 +918,7 @@ Page 51007 "BOSA Loans Disbursement Card"
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, Rec."Loan  No.", LineNo, GenJournalLine."Transaction Type"::Loan, GenJournalLine."Account Type"::Customer, LoanApps."Client Code", DirbursementDate, VarAmounttoDisburse, 'BOSA', LoanApps."Loan  No.", 'Loan Disbursement - ' + LoanApps."Loan Product Type", LoanApps."Loan  No.");
         //--------------------------------RECOVER OVERDRAFT()-------------------------------------------------------
+        //Message('Account No is %1', LoanApps."Client Code");
         //Code Here
 
         //...................Cater for Loan Offset Now !
@@ -981,9 +982,12 @@ Page 51007 "BOSA Loans Disbursement Card"
 
             UNTIL PCharges.NEXT = 0;
         END;
+        //Message('Loan PCharges Not Set');
+        Message('Process fee is %1, Amount to Disb is %2', Rec."Loan Processing Fee", VarAmounttoDisburse);
+
         //end of code
         //.....Valuation
-        VarAmounttoDisburse := VarAmounttoDisburse - (Rec."Loan Processing Fee" + Rec."Loan Dirbusement Fee" + Rec."Loan Insurance");
+        VarAmounttoDisburse := VarAmounttoDisburse - (Rec."Loan Processing Fee" + Rec."Loan Dirbusement Fee" + Rec."Loan Insurance" + (PCharges.Amount));
         LineNo := LineNo + 10000;
         SFactory.FnCreateGnlJournalLine(TemplateName, BatchName, LoanApps."Loan  No.", LineNo, GenJournalLine."Transaction Type"::" ", GenJournalLine."Account Type"::"G/L Account", GenSetUp."Asset Valuation Cost", DirbursementDate, LoanApps."Valuation Cost" * -1, 'BOSA', Rec."Batch No.", 'Loan Principle Amount ' + Format(LoanApps."Loan  No."), '');
         VarAmounttoDisburse := VarAmounttoDisburse - LoanApps."Valuation Cost";

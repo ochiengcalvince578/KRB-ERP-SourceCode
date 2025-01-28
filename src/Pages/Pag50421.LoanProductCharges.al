@@ -3,6 +3,7 @@ page 50421 "Loan Product Charges"
 {
     PageType = List;
     SourceTable = "Loan Product Charges";
+    ApplicationArea = all;
 
     layout
     {
