@@ -323,7 +323,7 @@ Table 51364 "Member Register Depricated"
         field(59; "Balance (LCY)"; Decimal)
         {
             AutoFormatType = 1;
-            CalcFormula = sum("Member Ledger Entry"."Amount (LCY)" where("Customer No." = field("No.")));
+            CalcFormula = sum("Cust. Ledger Entry"."Amount (LCY)" where("Customer No." = field("No.")));
             Caption = 'Balance (LCY)';
             Editable = false;
             FieldClass = FlowField;
@@ -1303,8 +1303,8 @@ Table 51364 "Member Register Depricated"
         }
         field(68002; "Current Loan"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                  "Transaction Type" = const("Share Capital"),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+                                                                  "Transaction Type" = const("Shares Capital"),
                                                                   "Posting Date" = field("Date Filter"),
                                                                   "Document No." = field("Document No. Filter")));
             Editable = false;
@@ -1312,7 +1312,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68003; "Current Shares"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter("Deposit Contribution"),
                                                                    "Posting Date" = field("Date Filter")));
             Editable = false;
@@ -1335,7 +1335,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68011; "Outstanding Balance"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter("Loan Repayment" | Loan)));
             Editable = false;
             FieldClass = FlowField;
@@ -1589,8 +1589,8 @@ Table 51364 "Member Register Depricated"
         }
         field(68039; "Current Investment Total"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Transaction Type" = const("Loan Insurance Charged"),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+                                                                   //    "Transaction Type" = const("Loan Insurance Charged"),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter")));
             Editable = false;
@@ -1602,8 +1602,8 @@ Table 51364 "Member Register Depricated"
         }
         field(68041; "Shares Retained"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Transaction Type" = const("Share Capital"),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+                                                                   "Transaction Type" = const("Shares Capital"),
                                                                    "Document No." = field("Document No. Filter"),
                                                                    "Posting Date" = field("Date Filter")));
             Editable = false;
@@ -1611,7 +1611,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68043; "Registration Fee Paid"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry"."Amount (LCY)" where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry"."Amount (LCY)" where("Customer No." = field("No."),
                                                                            "Transaction Type" = const("Registration Fee")));
             Editable = false;
             FieldClass = FlowField;
@@ -1625,8 +1625,8 @@ Table 51364 "Member Register Depricated"
         }
         field(68046; "Insurance Fund"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Loan Insurance Charged" | "Loan Insurance Paid"),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+                                                                   "Transaction Type" = filter("Insurance Charge" | "Loan Insurance Paid"),
                                                                    "Posting Date" = field("Date Filter")));
             Editable = false;
             FieldClass = FlowField;
@@ -1708,7 +1708,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68049; "Dividend Amount"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = const(Dividend),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter")));
@@ -1743,7 +1743,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68057; "Un-allocated Funds"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = const("Unallocated Funds"),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter")));
@@ -1802,7 +1802,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68064; "Accrued Interest"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter("Deposit Contribution")));
             Editable = false;
             FieldClass = FlowField;
@@ -1836,7 +1836,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68077; "Last Payment Date"; Date)
         {
-            CalcFormula = max("Member Ledger Entry"."Posting Date" where("Customer No." = field("No."),
+            CalcFormula = max("Cust. Ledger Entry"."Posting Date" where("Customer No." = field("No."),
                                                                           "Credit Amount" = filter(> 0)));
             FieldClass = FlowField;
         }
@@ -1845,7 +1845,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68079; "Current Savings"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = const("Deposit Contribution")));
             FieldClass = FlowField;
         }
@@ -1865,15 +1865,15 @@ Table 51364 "Member Register Depricated"
 
             end;
         }
-        field(68083; "FOSA Outstanding Balance"; Decimal)
-        {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                  "Transaction Type" = filter("Share Capital" | "Interest Paid" | "FOSA Shares")));
-            FieldClass = FlowField;
-        }
+        // field(68083; "FOSA Outstanding Balance"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                           "Transaction Type" = filter("Shares Capital" | "Interest Paid" | "FOSA Shares")));
+        //     FieldClass = FlowField;
+        // }
         field(68084; "FOSA Oustanding Interest"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter("Deposit Contribution")));
             FieldClass = FlowField;
         }
@@ -1987,7 +1987,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68110; "Outstanding Interest"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter("Interest Due" | "Interest Paid"),
                                                                   "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
@@ -2175,10 +2175,10 @@ Table 51364 "Member Register Depricated"
         }
         field(68183; "Member withdrawable Deposits"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Posting Date" = field("Date Filter"),
                                                                   "Document No." = field("Document No. Filter"),
-                                                                  "Transaction Type" = const("FOSA Shares")));
+                                                                  "Transaction Type" = const("Shares Capital")));
             FieldClass = FlowField;
         }
         field(68184; "Current Location"; Text[10])
@@ -2189,7 +2189,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68186; "Xmas Contribution"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = const("Insurance Contribution"),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter")));
@@ -2198,7 +2198,7 @@ Table 51364 "Member Register Depricated"
         }
         field(68187; "Risk Fund"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = const("Benevolent Fund"),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter")));
@@ -2225,13 +2225,13 @@ Table 51364 "Member Register Depricated"
         field(68194; "Contact Person Phone"; Code[20])
         {
         }
-        field(68195; "Development Shares"; Decimal)
-        {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                  "Transaction Type" = filter("Additional Shares"),
-                                                                  "Posting Date" = field("Date Filter")));
-            FieldClass = FlowField;
-        }
+        // field(68195; "Development Shares"; Decimal)
+        // {
+        //     CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                           "Transaction Type" = filter("Additional Shares"),
+        //                                                           "Posting Date" = field("Date Filter")));
+        //     FieldClass = FlowField;
+        // }
         field(68198; "Recruited By"; Code[20])
         {
         }
@@ -2281,7 +2281,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69040; "Total Loans Outstanding"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter(Loan | "Loan Repayment" | "Interest Paid")));
             FieldClass = FlowField;
         }
@@ -2411,10 +2411,10 @@ Table 51364 "Member Register Depricated"
         }
         field(69078; "Investment Account"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Posting Date" = field("Date Filter"),
                                                                   "Document No." = field("Document No. Filter"),
-                                                                  "Transaction Type" = const("Loan Insurance Charged")));
+                                                                  "Transaction Type" = const("Insurance Charge")));
             FieldClass = FlowField;
         }
         field(69079; "Mobile No 3"; Code[15])
@@ -2422,28 +2422,28 @@ Table 51364 "Member Register Depricated"
         }
         field(69080; "Share Capital B Class"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter"),
-                                                                   "Transaction Type" = const("Share Capital")));
+                                                                   "Transaction Type" = const("Shares Capital")));
             FieldClass = FlowField;
         }
         field(69081; "Normal Shares B Class"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Posting Date" = field("Date Filter"),
                                                                    "Document No." = field("Document No. Filter"),
                                                                    "Transaction Type" = const("Deposit Contribution")));
             FieldClass = FlowField;
         }
-        field(69082; "FOSA Shares"; Decimal)
-        {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter"),
-                                                                   "Transaction Type" = const("FOSA Shares")));
-            FieldClass = FlowField;
-        }
+        // field(69082; "FOSA Shares"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                            "Posting Date" = field("Date Filter"),
+        //                                                            "Document No." = field("Document No. Filter"),
+        //                                                            "Transaction Type" = const("FOSA Shares")));
+        //     FieldClass = FlowField;
+        // }
         field(69083; "Members Parish"; Code[10])
         {
             TableRelation = "Member's Parishes".Code;
@@ -2718,7 +2718,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69141; "Risk Fund Arrears"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   //   "Transaction Type" = filter(45 | 44),
                                                                   "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
@@ -2728,14 +2728,14 @@ Table 51364 "Member Register Depricated"
         }
         field(69144; "Benevolent Fund"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter("Benevolent Fund"),
                                                                    "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
         }
         field(69145; "Risk Fund Paid"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   //   "Transaction Type" = filter(45),
                                                                   "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
@@ -2751,21 +2751,21 @@ Table 51364 "Member Register Depricated"
         }
         field(69149; "Funeral Rider"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Transaction Type" = filter("Benevolent Fund"),
                                                                   "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
         }
         field(69150; "Loan Liabilities"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                   "Posting Date" = field("Date Filter"),
-                                                                  "Transaction Type" = filter("Share Capital" | "Interest Paid" | "Deposit Contribution" | "Insurance Contribution")));
+                                                                  "Transaction Type" = filter("Shares Capital" | "Interest Paid" | "Deposit Contribution" | "Insurance Contribution")));
             FieldClass = FlowField;
         }
         field(69151; "Last Deposit Contribution Date"; Date)
         {
-            CalcFormula = max("Member Ledger Entry"."Posting Date" where("Customer No." = field("No."),
+            CalcFormula = max("Cust. Ledger Entry"."Posting Date" where("Customer No." = field("No."),
                                                                           "Transaction Type" = filter("Deposit Contribution"),
                                                                           Amount = filter(< 0)));
             FieldClass = FlowField;
@@ -2833,7 +2833,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69167; "Group Deposits"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Group Code" = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Group Code" = field("No."),
                                                                    "Transaction Type" = filter("Deposit Contribution"),
                                                                    "Posting Date" = field("Date Filter")));
             Editable = false;
@@ -2841,7 +2841,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69168; "Group Loan Balance"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Group Code" = field("No."),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Group Code" = field("No."),
                                                                   "Transaction Type" = filter(Loan | "Loan Repayment"),
                                                                   "Posting Date" = field("Date Filter")));
             Editable = false;
@@ -2867,17 +2867,17 @@ Table 51364 "Member Register Depricated"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(69172; "Khoja Shares"; Decimal)
-        {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Additional Shares"),
-                                                                   "Posting Date" = field("Date Filter")));
-            Editable = false;
-            FieldClass = FlowField;
-        }
+        // field(69172; "Khoja Shares"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                            "Transaction Type" = filter("Additional Shares"),
+        //                                                            "Posting Date" = field("Date Filter")));
+        //     Editable = false;
+        //     FieldClass = FlowField;
+        // }
         field(69173; "Group Shares"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
                                                                    "Transaction Type" = filter("Deposit Contribution"),
                                                                    "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
@@ -2993,17 +2993,17 @@ Table 51364 "Member Register Depricated"
         }
         field(69200; "Loans Recoverd from Guarantors"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Recovery Transaction Type" = filter("Guarantor Recoverd"),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+                                                                   //    "Transaction Type" = filter("Guarantor Recoverd"),
                                                                    "Document No." = field("Document No. Filter"),
                                                                    "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;
         }
-        field(69201; "Loan Recovered From Guarantors"; Code[15])
-        {
-            CalcFormula = lookup("Member Ledger Entry"."Recoverd Loan" where("Customer No." = field("No.")));
-            FieldClass = FlowField;
-        }
+        // field(69201; "Loan Recovered From Guarantors"; Code[15])
+        // {
+        //     CalcFormula = lookup("Cust. Ledger Entry"."Recoverd Loan" where("Customer No." = field("No.")));
+        //     FieldClass = FlowField;
+        // }
         field(69202; "ID Date of Issue"; Date)
         {
         }
@@ -3025,14 +3025,14 @@ Table 51364 "Member Register Depricated"
         field(69208; "Approved On"; Date)
         {
         }
-        field(69210; "Additional Shares"; Decimal)
-        {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Posting Date" = field("Date Filter"),
-                                                                   "Document No." = field("Document No. Filter"),
-                                                                   "Transaction Type" = const("Additional Shares")));
-            FieldClass = FlowField;
-        }
+        // field(69210; "Additional Shares"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                            "Posting Date" = field("Date Filter"),
+        //                                                            "Document No." = field("Document No. Filter"),
+        //                                                            "Transaction Type" = const("Additional Shares")));
+        //     FieldClass = FlowField;
+        // }
         field(69211; "FOSA Shares Account No"; Code[15])
         {
         }
@@ -3047,7 +3047,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69215; "Last Contribution Entry No"; Integer)
         {
-            CalcFormula = max("Member Ledger Entry"."Entry No." where("Customer No." = field("No."),
+            CalcFormula = max("Cust. Ledger Entry"."Entry No." where("Customer No." = field("No."),
                                                                        "Transaction Type" = filter("Deposit Contribution"),
                                                                        Amount = filter(< 0)));
             FieldClass = FlowField;
@@ -3145,13 +3145,13 @@ Table 51364 "Member Register Depricated"
         {
             DataClassification = ToBeClassified;
         }
-        field(69234; "Jiokoe Savings"; Decimal)
-        {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Customer No." = field("No."),
-                                                                   "Transaction Type" = filter("Jiokoe Savings"),
-                                                                   "Posting Date" = field("Date Filter")));
-            FieldClass = FlowField;
-        }
+        // field(69234; "Jiokoe Savings"; Decimal)
+        // {
+        //     CalcFormula = - sum("Cust. Ledger Entry".Amount where("Customer No." = field("No."),
+        //                                                            "Transaction Type" = filter("Jiokoe Savings"),
+        //                                                            "Posting Date" = field("Date Filter")));
+        //     FieldClass = FlowField;
+        // }
         field(69235; colleges; Code[2])
         {
             DataClassification = ToBeClassified;
@@ -3201,7 +3201,7 @@ Table 51364 "Member Register Depricated"
         }
         field(69246; "Holiday Savings"; Decimal)
         {
-            CalcFormula = - sum("Member Ledger Entry".Amount where("Transaction Type" = filter("Holiday Savings"),
+            CalcFormula = - sum("Cust. Ledger Entry".Amount where("Transaction Type" = filter("Holiday Savings"),
                                                                    "Customer No." = field("No."),
                                                                    "Posting Date" = field("Date Filter")));
             FieldClass = FlowField;

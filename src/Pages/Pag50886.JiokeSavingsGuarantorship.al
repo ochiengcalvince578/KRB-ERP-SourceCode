@@ -14,10 +14,10 @@ page 50886 "Jioke Savings Guarantorship"
                 {
                     ApplicationArea = Basic;
                 }
-                field("Member No"; Rec."Member No")
-                {
-                    ApplicationArea = Basic;
-                }
+                // field("Member No"; Rec."Member No")
+                // {
+                //     ApplicationArea = Basic;
+                // }
                 field(Name; Rec.Name)
                 {
                     ApplicationArea = Basic;

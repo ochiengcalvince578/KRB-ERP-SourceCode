@@ -61,7 +61,7 @@ Codeunit 50025 SwizzKashMB
         DetailedVendorLedgerEntry: Record "Detailed Vendor Ledg. Entry";
         dashboardDataFilter: Date;
         VendorLedgerEntry: Record "Vendor Ledger Entry";
-        MemberLedgerEntry: Record "Member Ledger Entry";
+        MemberLedgerEntry: Record "Cust. Ledger Entry";
         LoansTable: Record  "Loans Register";
         SurePESAApplications: Record "SwizzKash Applications";
         GenJournalLine: Record "Gen. Journal Line";
@@ -449,7 +449,7 @@ Codeunit 50025 SwizzKashMB
                 MemberLedgerEntry.SetCurrentkey(MemberLedgerEntry."Entry No.");
                 MemberLedgerEntry.Ascending(false);
                 MemberLedgerEntry.SetRange(MemberLedgerEntry."Customer No.",Account);
-                MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Share Capital");
+                MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Shares Capital");
                 Mrowcount:=MemberLedgerEntry.Count;
                 if MemberLedgerEntry.Find('-') then begin
                   repeat
@@ -482,7 +482,7 @@ Codeunit 50025 SwizzKashMB
                 MemberLedgerEntry.SetCurrentkey(MemberLedgerEntry."Entry No.");
                 MemberLedgerEntry.Ascending(false);
                 MemberLedgerEntry.SetRange(MemberLedgerEntry."Customer No.",Account);
-                MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Jiokoe Savings");
+                // MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Jiokoe Savings");
                 Mrowcount:=MemberLedgerEntry.Count;
                 if MemberLedgerEntry.Find('-') then begin
                   repeat
@@ -1220,7 +1220,7 @@ Codeunit 50025 SwizzKashMB
         
             MemberLedgerEntry.Reset;
               MemberLedgerEntry.SetRange(MemberLedgerEntry."Customer No.",Members."No.");
-              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Share Capital");
+              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Shares Capital");
               if MemberLedgerEntry.Find('-') then begin
         
             BOSATransSchedule.Reset;
@@ -2208,7 +2208,7 @@ Codeunit 50025 SwizzKashMB
           if Members.Find('-') then begin
               MemberLedgerEntry.Reset;
               MemberLedgerEntry.SetRange(MemberLedgerEntry."Customer No.",Members."No.");
-              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Share Capital");
+              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Shares Capital");
               if MemberLedgerEntry.Find('-') then
                 repeat
                     amount:=amount+MemberLedgerEntry.Amount;
@@ -2268,14 +2268,14 @@ Codeunit 50025 SwizzKashMB
           Members.SetRange(Members."No.",FnGetMemberNo(phone));
           if Members.Find('-') then begin
              Members.CalcFields(Members."Benevolent Fund");
-             Members.CalcFields(Members."Jiokoe Savings");
+            //  Members.CalcFields(Members."Jiokoe Savings");
             // Members.CALCFIELDS(Members."Kisiko Welfare");
           //.. Members.CALCFIELDS(Members."Withdrawable Savings");
 
            if Members."Benevolent Fund">0 then
                accounts:=accounts+ ', Benevolent Fund Ksh. ' + Format(Members."Benevolent Fund");
-            if Members."Jiokoe Savings">0 then
-               accounts:=accounts+ ', Jiokoe Savings Ksh. ' + Format(Members."Jiokoe Savings");
+            // if Members."Jiokoe Savings">0 then
+            //    accounts:=accounts+ ', Jiokoe Savings Ksh. ' + Format(Members."Jiokoe Savings");
 
           end;
 
@@ -2386,7 +2386,7 @@ Codeunit 50025 SwizzKashMB
           if Members.Find('-') then begin
               MemberLedgerEntry.Reset;
               MemberLedgerEntry.SetRange(MemberLedgerEntry."Customer No.",Members."No.");
-              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Share Capital");
+              MemberLedgerEntry.SetRange(MemberLedgerEntry."Transaction Type",MemberLedgerEntry."transaction type"::"Shares Capital");
               if MemberLedgerEntry.Find('-') then begin
                 repeat
                     samount:=samount+MemberLedgerEntry.Amount;
@@ -2803,10 +2803,10 @@ Codeunit 50025 SwizzKashMB
                 Members.CalcFields(Members."Shares Retained");
                 TempBalance:=Members."Shares Retained";
               end;
-              if PaybillTrans."Key Word"='JIO' then begin
-                Members.CalcFields(Members."Jiokoe Savings");
-                TempBalance:=Members."Jiokoe Savings";
-              end;
+              // if PaybillTrans."Key Word"='JIO' then begin
+              //   Members.CalcFields(Members."Jiokoe Savings");
+              //   TempBalance:=Members."Jiokoe Savings";
+              // end;
 
               msg:='Dear ' +Members.Name+' your: '+PaybillTrans."Account No"+' has been credited with Ksh'+ Format(amount) +'. Your new balance is '+
                         'Ksh. '+Format(TempBalance)+'. Thank you for using KRB Mobile Services';
@@ -5323,8 +5323,8 @@ Codeunit 50025 SwizzKashMB
         MemberLedgerEntry.Reset;
         MemberLedgerEntry.SetRange(MemberLedgerEntry."Loan No",LoanNo);
         MemberLedgerEntry.SetFilter(MemberLedgerEntry."Transaction Type", '=%1|=%2',MemberLedgerEntry."transaction type"::"Interest Paid",MemberLedgerEntry."transaction type"::"Loan Repayment");
-        MemberLedgerEntry.CalcSums(MemberLedgerEntry."Credit Amount (LCY)");
-        amout:=MemberLedgerEntry."Credit Amount (LCY)";
+        MemberLedgerEntry.CalcSums(MemberLedgerEntry."Amount Posted");
+        amout:=MemberLedgerEntry."Amount Posted";
     end;
 
 
@@ -6150,14 +6150,14 @@ Codeunit 50025 SwizzKashMB
                             +' .Thank you for using KRB Sacco Mobile.';
                             SMSMessage(docNo,Members."No.",Members."Mobile Phone No",msg,'');
              end;
-              if AppType='3' then begin
-                Members.CalcFields(Members."Jiokoe Savings");
-                TempBalance:=Members."Jiokoe Savings";
+            //   if AppType='3' then begin
+            //     Members.CalcFields(Members."Jiokoe Savings");
+            //     TempBalance:=Members."Jiokoe Savings";
         
-                msg:='Dear '+SplitString(Members.Name,' ')+' Your Jiokoe Savings A/C Balance is Ksh.'+Format(TempBalance)
-                          +  ' .Thank you for using KRB Sacco Mobile.';
-                            SMSMessage(docNo,Members."No.",Members."Mobile Phone No",msg,'');
-             end;
+            //     msg:='Dear '+SplitString(Members.Name,' ')+' Your Jiokoe Savings A/C Balance is Ksh.'+Format(TempBalance)
+            //               +  ' .Thank you for using KRB Sacco Mobile.';
+            //                 SMSMessage(docNo,Members."No.",Members."Mobile Phone No",msg,'');
+            //  end;
         
         
             if AppType='4' then begin

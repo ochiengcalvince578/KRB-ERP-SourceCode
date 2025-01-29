@@ -486,7 +486,7 @@ Table 51365 "Member Ledger Entry"
         }
         field(68007; Totals; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Document No." = filter('JUNE  15/06/14')));
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Document No." = filter('JUNE  15/06/14')));
             FieldClass = FlowField;
         }
         field(68008; "Dimension Set ID"; Integer)
@@ -502,14 +502,14 @@ Table 51365 "Member Ledger Entry"
         }
         field(68011; "Total Debits"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Transaction Type" = filter("Share Capital"),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Transaction Type" = filter("Shares Capital"),
                                                                   "Loan Type" = field("Loan Type"),
                                                                   "Posting Date" = field("Posting Date")));
             FieldClass = FlowField;
         }
         field(68012; "Total Credits"; Decimal)
         {
-            CalcFormula = sum("Member Ledger Entry".Amount where("Transaction Type" = filter("Interest Paid"),
+            CalcFormula = sum("Cust. Ledger Entry".Amount where("Transaction Type" = filter("Interest Paid"),
                                                                   "Loan Type" = field("Loan Type"),
                                                                   "Posting Date" = field("Posting Date")));
             FieldClass = FlowField;
@@ -651,9 +651,9 @@ Table 51365 "Member Ledger Entry"
         DocTxt: label 'Member Ledger Entries';
 
 
-    procedure DrillDownOnEntries(var CustLedger: Record "Member Ledger Entry")
+    procedure DrillDownOnEntries(var CustLedger: Record "Cust. Ledger Entry")
     var
-        CustLedgEntry: Record "Member Ledger Entry";
+        CustLedgEntry: Record "Cust. Ledger Entry";
     begin
 
         //DtldCustLedgEntry.COPYFILTER("Customer No.",CustLedgEntry."Customer No.");
@@ -712,7 +712,7 @@ Table 51365 "Member Ledger Entry"
 
     procedure TestNoEntriesExist(CurrentFieldName: Text[100]; GLNO: Code[20])
     var
-        MemberLedgEntry: Record "Member Ledger Entry";
+        MemberLedgEntry: Record "Cust. Ledger Entry";
     begin
         //To prevent change of field
         MemberLedgEntry.SetCurrentkey(MemberLedgEntry."Customer No.");

@@ -130,8 +130,8 @@ page 50073 "Imprest Surrender Details"
     }
 
     var
-        Custledger: Record "Member Ledger Entry";
-        Custledger1: Record "Member Ledger Entry";
+        Custledger: Record "Cust. Ledger Entry";
+        Custledger1: Record "Cust. Ledger Entry";
         Amt: Decimal;
 }
 

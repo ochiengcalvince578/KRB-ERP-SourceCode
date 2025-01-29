@@ -38,11 +38,11 @@ page 50368 "Members Statistics"
                     Caption = 'Benevolent Fund Balance';
                     Editable = false;
                 }
-                field("Additional Shares"; Rec."Additional Shares")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
+                // field("Additional Shares"; Rec."Additional Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
                 field("Registration Fee Paid"; Rec."Registration Fee Paid")
                 {
                     ApplicationArea = Basic;
@@ -75,11 +75,11 @@ page 50368 "Members Statistics"
                     ApplicationArea = Basic;
                     StyleExpr = FieldStyle;
                 }
-                field("Loans Recoverd from Guarantors"; Rec."Loans Recoverd from Guarantors")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                }
+                // field("Loans Recoverd from Guarantors"; Rec."Loans Recoverd from Guarantors")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                // }
             }
             part(Control1102755002; "Loans Sub-Page List")
             {

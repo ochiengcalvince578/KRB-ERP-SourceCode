@@ -8,33 +8,33 @@ Table 51711 "Savings Guarantorship"
         {
             DataClassification = ToBeClassified;
         }
-        field(2; "Member No"; Code[20])
-        {
-            DataClassification = ToBeClassified;
+        // field(2; "Member No"; Code[20])
+        // {
+        //     DataClassification = ToBeClassified;
 
-            trigger OnValidate()
-            begin
-                Date := Today;
+        //     trigger OnValidate()
+        //     begin
+        //         Date := Today;
 
-                Cust.Reset;
-                Cust.SetRange(Cust."No.", "Member No");
-                if Cust.Find('-') then begin
-                    Cust.CalcFields(Cust."Jiokoe Savings");
-                    SavBal := Cust."Jiokoe Savings";
+        //         Cust.Reset;
+        //         Cust.SetRange(Cust."No.", "Member No");
+        //         if Cust.Find('-') then begin
+        //             Cust.CalcFields(Cust."Jiokoe Savings");
+        //             SavBal := Cust."Jiokoe Savings";
 
-                end;
+        //         end;
 
-                if Cust.Get("Member No") then begin
-                    Cust.CalcFields(Cust."Outstanding Balance", Cust."Jiokoe Savings", Cust.TLoansGuaranteed);
-                    Name := Cust.Name;
-                    "Loan Balance" := Cust."Outstanding Balance";
-                    SavBal := Cust."Jiokoe Savings";
-                    Amont := 0;
-                    Amont := SwizzsoftFactory.FnGetMemberSavingsLiability("Member No");
-                    Liability := Liability - Amont;
-                end;
-            end;
-        }
+        //         if Cust.Get("Member No") then begin
+        //             Cust.CalcFields(Cust."Outstanding Balance", Cust."Jiokoe Savings", Cust.TLoansGuaranteed);
+        //             Name := Cust.Name;
+        //             "Loan Balance" := Cust."Outstanding Balance";
+        //             SavBal := Cust."Jiokoe Savings";
+        //             Amont := 0;
+        //             Amont := SwizzsoftFactory.FnGetMemberSavingsLiability("Member No");
+        //             Liability := Liability - Amont;
+        //         end;
+        //     end;
+        // }
         field(3; Name; Text[100])
         {
             DataClassification = ToBeClassified;
@@ -67,10 +67,10 @@ Table 51711 "Savings Guarantorship"
 
     keys
     {
-        key(Key1; "Loan No", "Member No", "Entry No.")
-        {
-            Clustered = true;
-        }
+        // key(Key1; "Loan No", "Member No", "Entry No.")
+        // {
+        //     Clustered = true;
+        // }
     }
 
     fieldgroups

@@ -59,12 +59,12 @@ page 50428 "Member Statistics FactBox"
                     ApplicationArea = Basic;
                     Caption = 'Holiday Savings';
                 }
-                field("Additional Shares"; Rec."Additional Shares")
-                {
-                    ApplicationArea = Basic;
-                    Editable = false;
-                    Visible = false;
-                }
+                // field("Additional Shares"; Rec."Additional Shares")
+                // {
+                //     ApplicationArea = Basic;
+                //     Editable = false;
+                //     Visible = false;
+                // }
                 field("Outstanding Interest"; Rec."Outstanding Interest")
                 {
                     ApplicationArea = Basic;

@@ -75,10 +75,10 @@ Report 50225 "Member Share Capital Statement"
             {
             }
 
-            dataitem(Share; "Member Ledger Entry")
+            dataitem(Share; "Cust. Ledger Entry")
             {
                 DataItemLink = "Customer No." = field("No."), "Posting Date" = field("Date Filter");
-                DataItemTableView = sorting("Posting Date") where("Transaction Type" = const("Share Capital"), Reversed = filter(false));
+                DataItemTableView = sorting("Posting Date") where("Transaction Type" = const("Shares Capital"), Reversed = filter(false));
                 column(openBalances; OpenBalance)
                 {
                 }
@@ -280,7 +280,7 @@ Report 50225 "Member Share Capital Statement"
         LonRepaymentSchedule: Record "Loan Repayment Schedule";
 
 
-    local procedure GetBankCode(MembLedger: Record "Member Ledger Entry"): Text
+    local procedure GetBankCode(MembLedger: Record "Cust. Ledger Entry"): Text
     var
         BankLedger: Record "Bank Account Ledger Entry";
     begin
