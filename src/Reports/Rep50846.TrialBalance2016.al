@@ -135,6 +135,16 @@ Report 50846 "Trial Balance2016"
                 end;
             }
 
+            column(GrandTotalDebit; GrandTotalDebit)
+            {
+            }
+            column(GrandTotalCredit; -GrandTotalCredit)
+            {
+            }
+            column(FinalBalance; GrandTotalDebit + GrandTotalCredit)
+            {
+            }
+
             trigger OnAfterGetRecord()
             begin
                 CalcFields("Net Change", "Balance at Date");
@@ -167,6 +177,9 @@ Report 50846 "Trial Balance2016"
             begin
                 PageGroupNo := 0;
                 ChangeGroupNo := false;
+
+                GrandTotalDebit := 0;
+                GrandTotalCredit := 0;
 
                 company.Get();
                 company.CalcFields(company.Picture);
@@ -249,6 +262,9 @@ Report 50846 "Trial Balance2016"
         BlankLineNo: Integer;
         Totalcredit: Decimal;
         TotalDebit: Decimal;
+
+        GrandTotalDebit: Decimal;
+        GrandTotalCredit: Decimal;
 
 
 
