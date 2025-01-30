@@ -1011,74 +1011,74 @@ Page 56043 "KRB Sacco Role Center"
 
 
 
-                // group("Loans' Reports")
-                // {
-                //     action("Loans Balances Report")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = Report "Loan Balances Report";
-                //         Caption = 'Member Loans Book Report';
-                //         ToolTip = 'Member Loans Book Report';
-                //         Visible = true;
-                //     }
-                //     action("Loan Defaulter Aging")
-                //     {
-                //         ApplicationArea = all;
-                //         Caption = 'Loans Defaulter Aging-SASRA';
-                //         RunObject = report "SASRA Loans Classification";
-                //         ToolTip = 'Loan Classification Report';
-                //     }
-                //     action("Loan Collection Targets Report")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = report "Loan Monthly Expectation";
-                //         ToolTip = 'Loan Collection Targets';
-                //         Caption = 'Loan Collection Targets';
-                //     }
+                group("Loans' Reports")
+                {
+                    action("Loans Balances Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loan Balances Report";
+                        Caption = 'Member Loans Book Report';
+                        ToolTip = 'Member Loans Book Report';
+                        Visible = true;
+                    }
+                    action("Loan Defaulter Aging")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Loans Defaulter Aging-SASRA';
+                        RunObject = report "SASRA Loans Classification";
+                        ToolTip = 'Loan Classification Report';
+                    }
+                    action("Loan Collection Targets Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Monthly Expectation";
+                        ToolTip = 'Loan Collection Targets';
+                        Caption = 'Loan Collection Targets';
+                    }
 
-                //     action("Loans Guard Report")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = report "Loan Guard Report";
-                //         ToolTip = 'Loans Guard Report';
-                //     }
-                //     action("Loan defaulter List")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = report "Loan Defaulters List";
-                //     }
-                //     action("Loans Register")
-                //     {
-                //         ApplicationArea = all;
-                //         Caption = 'Member Loan Register';
-                //         RunObject = Report "Loans Register";
-                //         ToolTip = 'Loan Register Report';
-                //         Visible = false;
-                //     }
+                    action("Loans Guard Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Guard Report";
+                        ToolTip = 'Loans Guard Report';
+                    }
+                    action("Loan defaulter List")
+                    {
+                        ApplicationArea = all;
+                        RunObject = report "Loan Defaulters List";
+                    }
+                    action("Loans Register")
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Member Loan Register';
+                        RunObject = Report "Loans Register";
+                        ToolTip = 'Loan Register Report';
+                        Visible = false;
+                    }
 
-                //     action("Loans Arreas Report")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = Report "Loan Arrears Report";
-                //         ToolTip = 'Loan Arreas Report';
-                //         visible = false;
-                //     }
+                    action("Loans Arreas Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loan Arrears Report";
+                        ToolTip = 'Loan Arreas Report';
+                        visible = false;
+                    }
 
-                //     action("Loans Guarantor Details Report")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = Report "Loans Guarantor Details Report";
-                //         ToolTip = 'Loans Securities Report';
-                //     }
-                //     action("Secutiy Manangement Register")
-                //     {
-                //         ApplicationArea = all;
-                //         RunObject = Report "Secutiy Manangement Register";
-                //         ToolTip = 'Loans Securities Report';
-                //         Visible = false;
-                //     }
+                    action("Loans Guarantor Details Report")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Loans Guarantor Details Report";
+                        ToolTip = 'Loans Securities Report';
+                    }
+                    action("Secutiy Manangement Register")
+                    {
+                        ApplicationArea = all;
+                        RunObject = Report "Secutiy Manangement Register";
+                        ToolTip = 'Loans Securities Report';
+                        Visible = false;
+                    }
 
-                // }
+                }
 
                 action("PostedLoans")
                 {

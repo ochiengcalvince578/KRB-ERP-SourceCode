@@ -2194,9 +2194,9 @@ Table 51371 "Loans Register"
         {
             CalcFormula = sum("Cust. Ledger Entry"."Amount Posted" where("Customer No." = field("Client Code"),
                                                                   "Loan No" = field("Loan  No."),
-                                                                  "Transaction Type" = filter("Interest Due" | "Interest Paid"),
-                                                                  "Currency Code" = field("Currency Filter"),
-                                                                  "Posting Date" = field("Date filter")));
+                                                                  "Transaction Type" = filter("Interest Due" | "Interest Paid")));
+            //   "Currency Code" = field("Currency Filter"),
+            //   "Posting Date" = field("Date filter")));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -4552,6 +4552,29 @@ Table 51371 "Loans Register"
         {
             DataClassification = ToBeClassified;
         }
+
+        field(69310; "Scheduled Principle Payments"; Decimal)
+        {
+            CalcFormula = sum("Loan Repayment Schedule"."Principal Repayment" where("Loan No." = field("Loan  No."),
+                                                                                     "Repayment Date" = field("Date filter")));
+            FieldClass = FlowField;
+        }
+        field(69311; "Schedule Loan Amount Issued"; Decimal)
+        {
+            CalcFormula = lookup("Loan Repayment Schedule"."Loan Amount" where("Loan No." = field("Loan  No.")));
+            FieldClass = FlowField;
+        }
+        field(69312; "Schedule Installments"; Integer)
+        {
+            CalcFormula = count("Loan Repayment Schedule" where("Loan No." = field("Loan  No.")));
+            FieldClass = FlowField;
+        }
+        field(69313; "Scheduled Interest Payments"; Decimal)
+        {
+            CalcFormula = sum("Loan Repayment Schedule"."Monthly Interest" where("Loan No." = field("Loan  No."),
+                                                                                     "Repayment Date" = field("Date filter")));
+            FieldClass = FlowField;
+        }
     }
 
     keys
@@ -4629,6 +4652,7 @@ Table 51371 "Loans Register"
         key(Key22; "Issued Date")
         {
         }
+
     }
 
     fieldgroups

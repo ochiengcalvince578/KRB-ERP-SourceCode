@@ -893,6 +893,16 @@ Table 51398 "Sacco General Set-Up"
         {
         }
 
+        field(1620; "Last Reoder Date"; Date)
+        {
+        }
+        field(1621; "Last Reminder Reorder Date"; Date)
+        {
+        }
+        field(1622; "Negative Reminder Time"; Time)
+        {
+        }
+
     }
 
     keys

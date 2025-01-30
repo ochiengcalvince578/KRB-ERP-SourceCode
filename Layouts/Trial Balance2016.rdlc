@@ -2117,6 +2117,24 @@
         <Field Name="PageGroupNo">
           <DataField>PageGroupNo</DataField>
         </Field>
+        <Field Name="GrandTotalDebit">
+          <DataField>GrandTotalDebit</DataField>
+        </Field>
+        <Field Name="GrandTotalDebitFormat">
+          <DataField>GrandTotalDebitFormat</DataField>
+        </Field>
+        <Field Name="GrandTotalCredit">
+          <DataField>GrandTotalCredit</DataField>
+        </Field>
+        <Field Name="GrandTotalCreditFormat">
+          <DataField>GrandTotalCreditFormat</DataField>
+        </Field>
+        <Field Name="FinalBalance">
+          <DataField>FinalBalance</DataField>
+        </Field>
+        <Field Name="FinalBalanceFormat">
+          <DataField>FinalBalanceFormat</DataField>
+        </Field>
         <Field Name="ReportForNavId_5444">
           <DataField>ReportForNavId_5444</DataField>
         </Field>
